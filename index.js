@@ -16,7 +16,10 @@ app.use(koaBody({
 
 async function init() {
     console.log('开始训练中...')
-    const res = await training(10)
+    await training()
+    await training()
+    await training()
+    await training()
     console.log('训练结束')
     app.use(static(path.join(__dirname, './lib')));
     app.use(async(ctx) => {

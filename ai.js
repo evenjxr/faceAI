@@ -57,13 +57,10 @@ net.makeLayers(layer_defs);
      });
  }
 
- exports.training = function(times = 5) {
+ exports.training = function() {
     let imageList = [];
-    for (let i = 0; i<times; i++) {
-      let j = 0; 
-      for (; j < numberList.length; j++) {
-        imageList.push(loadData(numberList[j]));
-      }
+    for (j = 0; j < numberList.length; j++) {
+      imageList.push(loadData(numberList[j]));
     }
     return Promise.all(imageList)
  }
