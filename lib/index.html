@@ -58,7 +58,7 @@
         <h1>拍高或者狗的照片</h1>
         <div class="img">
             <img src="">
-            <h2 class="name">1231</h2>
+            <h2 class="name">loading</h2>
         </div>
         <div class="box">
             <button class="button">拍照</button>
@@ -74,6 +74,7 @@
     <!-- <script src="./canvas.js"></script> -->
     <script>
         document.querySelector('.file').addEventListener('change', function() {
+            $('.name').html('loading')
             var params = new FormData();
             var file = document.querySelector('.file').files[0];
             var reader = new FileReader();

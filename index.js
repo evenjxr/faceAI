@@ -5,7 +5,6 @@ const koaBody = require('koa-body');
 const fs = require('fs');
 
 const { training, checkNumber } = require('./ai')
-
 const app = new koa();
 
 app.use(koaBody({
@@ -17,26 +16,8 @@ app.use(koaBody({
 
 async function init() {
     console.log('开始训练中...')
-    await training()
-    await training()
-    await training()
-    await training()
-    await training()
-    await training()
-    await training()
-    await training()
-    await training()
-    await training()
-    await training()
-    await training()
-    await training()
-    await training()
-    await training()
-    await training()
-    await training()
-    await training()
-    const res = await training()
-    console.log('训练结果', res)
+    const res = await training(10)
+    console.log('训练结束')
     app.use(static(path.join(__dirname, './lib')));
     app.use(async(ctx) => {
         if (ctx.url === '/uploadFile') {
@@ -50,7 +31,6 @@ async function init() {
             ctx.end;
         }
     })
-    
     app.listen(3000, function() {
         console.log('训练完毕')
     });
