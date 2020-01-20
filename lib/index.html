@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>狗和猫的判断</title>
+    <style>
+        /* #canvas {
+            border: 1px solid red;
+        } */
+        body {
+            padding: 30px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .img {
+            width: 100%;
+            height: 380px;
+            overflow: hidden;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            overflow: hidden;
+        }
+        img {
+            width: 99%;
+            height: 300px;
+            border: 1px solid red;
+            overflow: hidden;
+        }
+        .box {
+            position: relative;
+        }
+        .button {
+            background: lightskyblue;
+            color: #fff;
+            display: block;
+            margin: 0 auto;
+            width: 100%;
+            height: 50px;
+        }
+        .file {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+        }
+    </style>
+
+</head>
+<body>
+    <div>
+        <h1>拍高或者狗的照片</h1>
+        <div class="img">
+            <img src="">
+            <h2 class="name">1231</h2>
+        </div>
+        <div class="box">
+            <button class="button">拍照</button>
+            <input type="file" class="file" name="file" accept="image/*" capture="camera">
+        </div>
+        <!-- <canvas id="canvas" width="300" height="300"></canvas> -->
+       
+        <!-- <button id="test">测试</button> -->
+        <!-- <button class="clear">清空</button> -->
+        <!-- <button class="upload">上传</button> -->
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <!-- <script src="./canvas.js"></script> -->
+    <script>
+        document.querySelector('.file').addEventListener('change', function() {
+            var params = new FormData();
+            var file = document.querySelector('.file').files[0];
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function (e) {
+                $('img')[0].src = e.target.result
+            }
+            params.append('file', file)
+            $.ajax({
+                data: params,
+                url: '/uploadFile',
+                type: 'post',
+                processData: false,
+                contentType: false,
+                success: function(res) {
+                    console.log(1111, res)
+                    $('.name').html(res)
+                }
+            })
+        })
+
+        // document.querySelector('#test').addEventListener('click', function() {
+        //     var canvas = document.querySelector('#canvas');
+        //     var src = canvas.toDataURL('image/png')
+        //     function dataURItoBlob(dataURI) {//图片转成Buffer
+        //         var byteString = atob(dataURI.split(',')[1]);
+        //         var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+        //         var ab = new ArrayBuffer(byteString.length);
+        //         var ia = new Uint8Array(ab);
+        //         for (var i = 0; i < byteString.length; i++) {
+        //             ia[i] = byteString.charCodeAt(i);
+        //         }
+        //         return new Blob([ab], {type: mimeString});
+        //     }
+        //     var blob = dataURItoBlob(src);
+        //     var params = new FormData();
+        //     params.append('file', blob, Math.random()+'.png')
+        //     $.ajax({
+        //         data: params,
+        //         url: '/uploadFile',
+        //         type: 'post',
+        //         processData: false,
+        //         contentType: false,
+        //         success: function(res) {
+        //             console.log(res)
+        //         }
+        //     })
+        // });
+    </script>
+</body>
+</html>

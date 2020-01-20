@@ -1,0 +1,21 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "convnet": "^1.0.0",
+    "convnetjs2": "^2.0.6",
+    "jimp": "^0.9.3",
+    "koa": "^2.11.0",
+    "koa-body": "^4.1.1",
+    "koa-static": "^5.0.0",
+    "koa2": "^2.0.0-alpha.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
