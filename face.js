@@ -39,7 +39,6 @@ module.exports = numberList = [
         "url": "./face/mao8.png",
         "index": 1
     },
-    ,
     {
         "name": "猫",
         "url": "./face/mao9.png",
